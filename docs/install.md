@@ -1,6 +1,6 @@
 # Playwright project setup
 
-> Following https://playwright.dev/docs/intro:
+> Following [Playwright getting started](https://playwright.dev/docs/intro):
 
  ## 1. Install node
 
