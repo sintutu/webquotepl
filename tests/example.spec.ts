@@ -18,8 +18,10 @@ import { test, expect } from '@playwright/test';
 // });
 
 test('General page appears', async ({ page }) => {
-  await page.goto('https://www-acc.santam.co.za/webquotepl/general?utm_source=getaquote');
-
+  await page.goto(
+    'https://www-acc.santam.co.za/webquotepl/general?utm_source=getaquote',
+    { waitUntil: 'domcontentloaded' }
+  );
   const vehicleOption = page.getByRole('button', {
     name: 'Vehicle Vehicle +'
   });
