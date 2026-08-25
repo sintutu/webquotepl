@@ -6,6 +6,24 @@ const baseURL = configuredBaseURL?.endsWith('/')
   ? configuredBaseURL
   : `${configuredBaseURL || defaultBaseURL}/`;
 
+const projects = [
+  {
+    name: 'chromium',
+    use: { ...devices['Desktop Chrome'] },
+  },
+  {
+    name: 'firefox',
+    use: { ...devices['Desktop Firefox'] },
+  },
+];
+
+if (!process.env.CI) {
+  projects.push({
+    name: 'webkit',
+    use: { ...devices['Desktop Safari'] },
+  });
+}
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
@@ -17,18 +35,5 @@ export default defineConfig({
     baseURL,
     trace: 'on-first-retry',
   },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-  ],
+  projects,
 });
