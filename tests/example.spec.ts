@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('vehicle quote flow reaches the next step', async ({ page }) => {
-  await page.goto('/general?utm_source=getaquote', {
+  await page.goto('general?utm_source=getaquote', {
     waitUntil: 'domcontentloaded',
   });
 
