@@ -8,7 +8,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: process.env.WEBQUOTE_BASE_URL || 'https://www-acc.santam.co.za/webquotepl',
+    baseURL: process.env.WEBQUOTE_BASE_URL || 'https://www-acc.santam.co.za/webquotepl/',
     trace: 'on-first-retry',
   },
   projects: [
