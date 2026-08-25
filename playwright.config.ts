@@ -1,5 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const defaultBaseURL = 'https://www-acc.santam.co.za/webquotepl/';
+const configuredBaseURL = process.env.WEBQUOTE_BASE_URL;
+const baseURL = configuredBaseURL?.endsWith('/')
+  ? configuredBaseURL
+  : `${configuredBaseURL || defaultBaseURL}/`;
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
@@ -8,7 +14,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: process.env.WEBQUOTE_BASE_URL || 'https://www-acc.santam.co.za/webquotepl/',
+    baseURL,
     trace: 'on-first-retry',
   },
   projects: [
