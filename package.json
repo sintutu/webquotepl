@@ -6,7 +6,11 @@
   "directories": {
     "doc": "docs"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sintutu/webquotepl.git"
@@ -14,11 +18,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/sintutu/webquotepl/issues"
   },
   "homepage": "https://github.com/sintutu/webquotepl#readme",
+  "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.62.1",
     "@types/node": "^26.2.0"
