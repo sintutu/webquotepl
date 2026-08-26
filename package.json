@@ -7,9 +7,13 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "playwright test",
-    "test:headed": "playwright test --headed",
-    "test:debug": "playwright test --debug"
+    "test": "playwright test --project=chromium --project=firefox",
+    "test:all": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:headed": "playwright test --headed --project=chromium --project=firefox",
+    "test:debug": "playwright test --debug --project=chromium --project=firefox"
   },
   "repository": {
     "type": "git",
