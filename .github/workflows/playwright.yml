@@ -3,23 +3,26 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, setup ]
   workflow_dispatch:
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      WEBQUOTE_BASE_URL: https://www-acc.santam.co.za/webquotepl/
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: 26
+        node-version: 22
+        cache: npm
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npm test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
