@@ -1,7 +1,8 @@
 name: Playwright Tests
+run-name: Playwright Tests - ${{ github.ref_name }}
 on:
   push:
-    branches: [ main ]
+    branches: [ main, start-pages ]
   pull_request:
     branches: [ main, setup ]
   workflow_dispatch:
@@ -23,9 +24,12 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npm test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+    - name: Upload Playwright debug artifacts
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
       with:
-        name: playwright-report
-        path: playwright-report/
+        name: playwright-debug-artifacts
+        path: |
+          playwright-report/
+          test-results/
         retention-days: 30

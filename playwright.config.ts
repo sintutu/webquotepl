@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const defaultBaseURL = 'https://www-acc.santam.co.za/webquotepl/';
+const defaultBaseURL = 'https://www-acc.santam.co.za/webquotepl';
 const configuredBaseURL = process.env.WEBQUOTE_BASE_URL;
 const baseURL = configuredBaseURL?.endsWith('/')
   ? configuredBaseURL
@@ -15,6 +15,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL,
+    screenshot: 'only-on-failure',
     trace: 'on-first-retry',
   },
   projects: [
